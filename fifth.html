@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function loadJSON(url) {
+            return fetch(url).then(
+                respone => {
+                    if (respone.status == 200) {
+                        return respone.json();
+                    } else {
+                        throw new Error(respone.status)
+                    }
+                }
+            );
+        }
+        // Using Asyn
+        async function loadJSONasync(url) {
+            let response = await fetch(url)
+            if (response.status == 200) {
+                let data = await response.json();
+                return data;
+            } else {
+                throw new Error(response.status)
+            }
+        }
+        console.log(loadJSON('https://randomuser.me/api/'));
+        console.log("Now Time of Async:");
+        console.log(loadJSONasync('https://randomuser.me/api/'));
+    </script>
+</body>
+
+</html>

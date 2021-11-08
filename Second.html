@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function createEnimal(species, verb, noise) {
+            const obj = {
+                name: species,
+                [verb]: () => console.log(noise),
+            }
+            return obj;
+        }
+        const d = createEnimal("Dog", "bark", "Wooooooo");
+        d.bark();
+        const s = createEnimal("Sheep", "belt", "BAAAAAaaaaa");
+        s.belt();
+    </script>
+</body>
+
+</html>

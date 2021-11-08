@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <script>
+        var plant1 = [];
+        var plant2 = [];
+        var plant3 = [];
+
+
+        $.get(
+            "https://swapi.dev/api/",
+        ).then((res) => {
+            $.get(
+                "https://swapi.dev/api/films",
+            ).then((res) => {
+                $.get(
+                    "https://swapi.dev/api/films/planets/1/",
+                ).then((res) => {
+                    plant1 = res
+                })
+            }).then(
+                $.get(
+                    "https://swapi.dev/api/films/planets/2/",
+                ).then((res) => {
+                    plant2 = res
+                })
+            ).then(
+                $.get(
+                    "https://swapi.dev/api/films/planets/3/",
+                ).then((res) => {
+                    plant3 = res.json();
+                })
+            ).then(() => {
+                console.log("Plant1: ", plant1);
+                console.log("Plant2: ", plant2);
+                console.log("Plant3: ", plant3);
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Part 1
+        const concatArray = (arr1, arr2) => newArray = [...arr1, ...arr2];
+        var arr1 = ["apple", "banana", "Cherry", "Damson Date", "Elderberry"];
+        var arr2 = [100, 200, 300, 400, 500];
+        var newArray = concatArray(arr1, arr2);
+        console.log("Task 1 ", newArray);
+
+        // Part 2
+        const addKeyVal = (obj, key, val) => obj = {
+            ...obj,
+            key: val
+        }
+        var obj1 = {
+            name: "Khan",
+            education: "Software Engineer"
+        };
+        var obj2 = addKeyVal(obj1, "age", 22);
+        console.log("Task 2 ", obj2);
+
+
+        // Part 3
+        const removeKey = (obj, key) => {
+            delete obj[key];
+            return obj;
+        }
+        var obj2 = {
+            name: "Khan",
+            education: "Software Engineer",
+            age: 22,
+            university: "Sukkur IBA"
+        };
+        var obj3 = removeKey(obj2, "age");
+        console.log("Task 3 ", obj3);
+
+
+        // Part 4
+        const combine = (obj1, obj2) => obj = {
+            ...obj1,
+            ...obj2
+        }
+        var obj1 = {
+            name: "Khan",
+            education: "Software Engineer"
+        };
+        var obj2 = {
+            a: "apple",
+            b: "banana",
+            c: "Cherry",
+            d: "Damson Date",
+            e: "Elderberry"
+        };
+        var obj3 = combine(obj1, obj2);
+        console.log("Task 4 ", obj3);
+
+
+        // Part 5
+        const update = (obj, key, val) => {
+            obj[key] = val;
+            return obj;
+        }
+        var obj4 = {
+            name: "Khan",
+            education: "Software Engineer",
+            age: 22,
+            university: "Sukkur IBA"
+        };
+        var obj5 = update(obj4, "name", "Naveed");
+        console.log("Task 5 ", obj5);
+    </script>
+</body>
+
+</html>

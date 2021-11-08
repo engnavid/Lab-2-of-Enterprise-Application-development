@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const objGet = (arr) => {
+            const [first, second, third, ...rest] = arr;
+            return {
+                first,
+                second,
+                third,
+                rest
+            };
+        }
+
+        var array = ["apple", "banana", "Cherry", "Damson Date", "Elderberry"];
+        console.log(objGet(array));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+    </script>
+</head>
+
+<body style="background-color: black;">
+    <div class="container">
+        <h1 class="text-center my-8 " style="color: white;">GIPHY PARTY</h1>
+        <form class="justify-content-center d-flex form-inline mb-4">
+            <input type="text" id="search" name="search" placeholder="Enter name to search for GIF..."
+                class="form-control mx-2" />
+            <button type="submit" class="btn btn-secondary">Search Graphy!</input>
+                <button id="remove" class="btn btn-danger mx-2">Remove Images</button>
+        </form>
+        <div id="gifs" class="row">
+        </div>
+    </div>
+
+    <script>
+        var $gifHere = $("#gifs");
+        var $gifSearched = $("#search");
+
+        $("form").on("submit", function (e) {
+            e.preventDefault();
+            var searchTerm = $gifSearched.val();
+            $gifSearched.val("");
+            $.get(
+                "http://api.giphy.com/v1/gifs/search", {
+                    q: searchTerm,
+                    api_key: "dc6zaTOxFJmzC"
+                }
+            ).then(function (res) {
+                var numResults = res.data.length;
+                if (numResults) {
+                    var randomIdx = Math.floor(Math.random() * numResults);
+                    var $newCol = $("<div>", {
+                        class: "col-md-4 col-12 mb-4"
+                    });
+                    var $newGif = $("<img>", {
+                        src: res.data[randomIdx].images.original.url,
+                        class: "w-100"
+                    });
+                    $newCol.append($newGif);
+                    $gifHere.append($newCol);
+                }
+            });
+        });
+
+        $("#remove").on("click", function () {
+            $gifHere.empty();
+        });
+    </script>
+</body>
+
+</html>
